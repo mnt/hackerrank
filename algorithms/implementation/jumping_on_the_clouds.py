@@ -3,24 +3,18 @@
 import sys
 
 
-n,k = input().strip().split(' ')
-n,k = [int(n),int(k)]
+n = int(input().strip())
 c = [int(c_temp) for c_temp in input().strip().split(' ')]
-energy = 100
-index = 0
-jumped = False
-while index != 0 or not jumped:
-    if not jumped:
-        jumped = True
-    if c[index] == 1:
-        energy -= 2
 
-    energy -= 1
-    index = (index + k) % n
+count = 0
+i = 0
 
-    if index == n:
-        index = 0
-    elif index > n:
-        index = index - n
+while i != n - 1:
+    if i + 2 < n and c[i + 2] != 1:
+        i += 2
+    else:
+        i += 1
 
-print(energy)
+    count += 1
+
+print(count)
